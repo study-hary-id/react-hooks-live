@@ -1,20 +1,14 @@
 import { useEffect, useState } from "react";
 
-export default function HooksDemo(props) {
-  const [name, setName] = useState("Agata");
-  const [location, setLocation] = useState("Nairobi");
-  const [resolution, setResolution] = useState({
-    width: window.innerWidth,
-    height: window.innerHeight
-  });
+function useFormInput(initialValue) {
+  const [value, setValue] = useState(initialValue);
 
-  function handleNameChange(e) {
-    setName(e.target.value);
+  function handleChange(e) {
+    setValue(e.target.value);
   }
 
-  function handleLocationChange(e) {
-    setLocation(e.target.value);
-  }
+  return { value, onChange: handleChange };
+}
 
   useEffect(() => {
     document.title = `${name} from ${location}`;
