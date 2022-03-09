@@ -10,8 +10,12 @@ function useFormInput(initialValue) {
   return { value, onChange: handleChange };
 }
 
+function useDocumentTitle(title) {
   useEffect(() => {
-    document.title = `${name} from ${location}`;
+    document.title = title;
+  });
+}
+
 
     const handleResize = () => {
       setResolution({
