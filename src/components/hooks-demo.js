@@ -16,20 +16,25 @@ function useDocumentTitle(title) {
   });
 }
 
+function useWindowResolution() {
+  const [width, setWidth] = useState(window.innerWidth);
+  const [height, setHeight] = useState(window.innerHeight);
 
+  useEffect(() => {
     const handleResize = () => {
-      setResolution({
-        width: window.innerWidth,
-        height: window.innerHeight
-      });
+      setWidth(window.innerWidth);
+      setHeight(window.innerHeight);
     };
     window.addEventListener("resize", handleResize);
-
     // Return will clean-up the function.
     return () => {
       window.removeEventListener("resize", handleResize);
-    }
-  });
+    };
+  }, [width, height]);
+
+  return { width, height };
+}
+
 
   return (
     <section>
