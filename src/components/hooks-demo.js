@@ -3,6 +3,10 @@ import { useEffect, useState } from "react";
 export default function HooksDemo(props) {
   const [name, setName] = useState("Agata");
   const [location, setLocation] = useState("Nairobi");
+  const [resolution, setResolution] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight
+  });
 
   function handleNameChange(e) {
     setName(e.target.value);
@@ -12,7 +16,22 @@ export default function HooksDemo(props) {
     setLocation(e.target.value);
   }
 
-  useEffect(() => document.title = `${name} from ${location}`);
+  useEffect(() => {
+    document.title = `${name} from ${location}`;
+
+    const handleResize = () => {
+      setResolution({
+        width: window.innerWidth,
+        height: window.innerHeight
+      });
+    };
+    window.addEventListener("resize", handleResize);
+
+    // Return will clean-up the function.
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    }
+  });
 
   return (
     <section>
@@ -38,7 +57,10 @@ export default function HooksDemo(props) {
           />
         </section>
       </form>
-      <p>Hello {name} from {location}</p>
+      <p>
+        Hello {name} from {location} &nbsp;
+        {resolution.width} x {resolution.height}
+      </p>
     </section>
   );
 }

@@ -3,9 +3,44 @@ import React from "react";
 export default class ClassDemo extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { name: "Agata", location: "Nairobi" };
+    this.state = {
+      name: "Agata",
+      location: "Nairobi",
+      resolution: {
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
+    };
+
+    this.handleResize = this.handleResize.bind(this);
+
     this.handleNameChange = this.handleNameChange.bind(this);
+
     this.handleLocationChange = this.handleLocationChange.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+    document.title = `${this.state.name} from ${this.state.location}`;
+  }
+
+  componentDidUpdate() {
+    window.addEventListener("resize", this.handleResize);
+    document.title = `${this.state.name} from ${this.state.location}`;
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
+
+  handleResize() {
+    this.setState({
+      ...this.state,
+      resolution: {
+        width: window.innerWidth,
+        height: window.innerHeight
+      }
+    });
   }
 
   handleNameChange(e) {
@@ -14,14 +49,6 @@ export default class ClassDemo extends React.Component {
 
   handleLocationChange(e) {
     this.setState({ ...this.state, location: e.target.value });
-  }
-
-  componentDidMount() {
-    document.title = `${this.state.name} from ${this.state.location}`;
-  }
-
-  componentDidUpdate() {
-    document.title = `${this.state.name} from ${this.state.location}`;
   }
 
   render() {
@@ -49,7 +76,10 @@ export default class ClassDemo extends React.Component {
             />
           </section>
         </form>
-        <p>Hello {this.state.name} from {this.state.location}</p>
+        <p>
+          Hello {this.state.name} from {this.state.location} &nbsp;
+          {this.state.resolution.width} x {this.state.resolution.height}
+        </p>
       </section>
     );
   }
