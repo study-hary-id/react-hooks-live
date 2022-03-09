@@ -2,9 +2,14 @@ import { useState } from "react";
 
 export default function HooksDemo(props) {
   const [name, setName] = useState("Agata");
+  const [location, setLocation] = useState("Nairobi");
 
   function handleNameChange(e) {
     setName(e.target.value);
+  }
+
+  function handleLocationChange(e) {
+    setLocation(e.target.value);
   }
 
   return (
@@ -20,9 +25,18 @@ export default function HooksDemo(props) {
             onChange={handleNameChange}
           />
         </section>
+        <section>
+          <label htmlFor="location">Location</label>
+          <input
+            type="text"
+            name="location"
+            id="location"
+            value={location}
+            onChange={handleLocationChange}
+          />
+        </section>
       </form>
-
-      <p>Hello, {name}!</p>
+      <p>Hello {name} from {location}</p>
     </section>
   );
 }
