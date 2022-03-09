@@ -16,6 +16,14 @@ export default class ClassDemo extends React.Component {
     this.setState({ ...this.state, location: e.target.value });
   }
 
+  componentDidMount() {
+    document.title = `${this.state.name} from ${this.state.location}`;
+  }
+
+  componentDidUpdate() {
+    document.title = `${this.state.name} from ${this.state.location}`;
+  }
+
   render() {
     return (
       <section>
