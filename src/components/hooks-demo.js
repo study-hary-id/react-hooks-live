@@ -35,33 +35,27 @@ function useWindowResolution() {
   return { width, height };
 }
 
+export default function HooksDemo(props) {
+  const name = useFormInput("Agata");
+  const location = useFormInput("Nairobi");
+  const resolution = useWindowResolution();
+
+  useDocumentTitle(`${name.value} from ${location.value}`);
 
   return (
     <section>
       <form autoComplete="off">
         <section>
           <label htmlFor="name">Name</label>
-          <input
-            type="text"
-            name="name"
-            id="name"
-            value={name}
-            onChange={handleNameChange}
-          />
+          <input type="text" name="name" id="name" { ...name } />
         </section>
         <section>
           <label htmlFor="location">Location</label>
-          <input
-            type="text"
-            name="location"
-            id="location"
-            value={location}
-            onChange={handleLocationChange}
-          />
+          <input type="text" name="location" id="location" { ...location } />
         </section>
       </form>
       <p>
-        Hello {name} from {location} &nbsp;
+        Hello {name.value} from {location.value} &nbsp;
         {resolution.width} x {resolution.height}
       </p>
     </section>
