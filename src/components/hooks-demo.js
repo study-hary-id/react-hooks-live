@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function HooksDemo(props) {
   const [name, setName] = useState("Agata");
@@ -11,6 +11,8 @@ export default function HooksDemo(props) {
   function handleLocationChange(e) {
     setLocation(e.target.value);
   }
+
+  useEffect(() => document.title = `${name} from ${location}`);
 
   return (
     <section>
