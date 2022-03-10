@@ -28,6 +28,7 @@ function useWindowResolution() {
     window.addEventListener("resize", handleResize);
     // Return will clean-up the function.
     return () => {
+      window.title = "React Hooks Live";
       window.removeEventListener("resize", handleResize);
     };
   }, [width, height]);
