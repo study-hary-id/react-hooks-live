@@ -46,7 +46,7 @@ export default function HooksDemo(props) {
   return (
     <div className="px-4">
       <div className="flex container mx-auto">
-        <div class="component">
+        <div className="component">
           <h1 className="mb-4">Hooks Demo</h1>
           <form autoComplete="off">
             <div className="field">
