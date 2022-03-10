@@ -5,6 +5,7 @@ import ClassDemo from "./components/class-demo";
 import HooksDemo from "./components/hooks-demo";
 
 function App() {
+  // Add name and path to add new menus to Navbar.
   const links = [
     { name: "Class", path: "/" },
     { name: "Hooks", path: "/hooks-demo" }
@@ -16,7 +17,11 @@ function App() {
         <Navbar links={links} />
       </header>
       <main>
-        Hello, World!
+      <Routes>
+          {/* Add Route component to add new menus to Navbar. */}
+          <Route path="/" element={<ClassDemo />} />
+          <Route path="/hooks-demo" element={<HooksDemo />} />
+        </Routes>
       </main>
     </Router>
   );
