@@ -31,11 +31,11 @@ export default class ClassDemo extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
+    document.title = "React Hooks Live";
   }
 
   handleResize() {
     this.setState({
-      ...this.state,
       resolution: {
         width: window.innerWidth,
         height: window.innerHeight
@@ -44,11 +44,11 @@ export default class ClassDemo extends React.Component {
   }
 
   handleNameChange(e) {
-    this.setState({ ...this.state, name: e.target.value });
+    this.setState({ name: e.target.value });
   }
 
   handleLocationChange(e) {
-    this.setState({ ...this.state, location: e.target.value });
+    this.setState({ location: e.target.value });
   }
 
   render() {
