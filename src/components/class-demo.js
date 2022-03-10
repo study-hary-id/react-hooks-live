@@ -53,34 +53,43 @@ export default class ClassDemo extends React.Component {
 
   render() {
     return (
-      <section>
-        <form autoComplete="off">
-          <section>
-            <label htmlFor="name">Name</label>
-            <input
-              type="text"
-              name="name"
-              id="name"
-              value={this.state.name}
-              onChange={this.handleNameChange}
-            />
-          </section>
-          <section>
-            <label htmlFor="location">Location</label>
-            <input
-              type="text"
-              name="location"
-              id="location"
-              value={this.state.location}
-              onChange={this.handleLocationChange}
-            />
-          </section>
-        </form>
-        <p>
-          Hello {this.state.name} from {this.state.location} &nbsp;
-          {this.state.resolution.width} x {this.state.resolution.height}
-        </p>
-      </section>
+      <div className="px-4">
+        <div className="flex container mx-auto">
+          <div className="component">
+            <h1 className="mb-4">Class Demo</h1>
+            <form autoComplete="off">
+              <div className="field">
+                <label htmlFor="name">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  value={this.state.name}
+                  onChange={this.handleNameChange}
+                />
+              </div>
+              <div className="field">
+                <label htmlFor="location">Location</label>
+                <input
+                  type="text"
+                  name="location"
+                  id="location"
+                  value={this.state.location}
+                  onChange={this.handleLocationChange}
+                />
+              </div>
+            </form>
+            <p>
+              <span className="text-output">
+                Hello {this.state.name} from {this.state.location} &nbsp;
+              </span>
+              <strong>
+                {this.state.resolution.width} x {this.state.resolution.height}
+              </strong>
+            </p>
+          </div>
+        </div>
+      </div>
     );
   }
 }
