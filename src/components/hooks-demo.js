@@ -44,21 +44,28 @@ export default function HooksDemo(props) {
   useDocumentTitle(`${name.value} from ${location.value}`);
 
   return (
-    <section>
-      <form autoComplete="off">
-        <section>
-          <label htmlFor="name">Name</label>
-          <input type="text" name="name" id="name" { ...name } />
-        </section>
-        <section>
-          <label htmlFor="location">Location</label>
-          <input type="text" name="location" id="location" { ...location } />
-        </section>
-      </form>
-      <p>
-        Hello {name.value} from {location.value} &nbsp;
-        {resolution.width} x {resolution.height}
-      </p>
-    </section>
+    <div className="px-4">
+      <div className="flex container mx-auto">
+        <div class="component">
+          <h1 className="mb-4">Hooks Demo</h1>
+          <form autoComplete="off">
+            <div className="field">
+              <label htmlFor="name">Name</label>
+              <input type="text" name="name" id="name" { ...name } />
+            </div>
+            <div className="field">
+              <label htmlFor="location">Location</label>
+              <input type="text" name="location" id="location" { ...location } />
+            </div>
+          </form>
+          <p>
+            <span className="text-output">
+              Hello {name.value} from {location.value} &nbsp;
+            </span>
+            <strong>{resolution.width} x {resolution.height}</strong>
+          </p>
+        </div>
+      </div>
+    </div>
   );
 }
