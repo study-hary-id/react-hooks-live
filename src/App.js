@@ -6,6 +6,7 @@ import HooksDemo from "./components/hooks-demo";
 import UsersList from "./components/users-list";
 import CountdownClass from "./components/countdown-class";
 import UsersListAxiosHooks from "./components/users-list-axios-hooks";
+import HigherOrderComponent from "./components/higher-order-component";
 
 function App() {
   // Add name and path to add new menus to Navbar.
@@ -14,7 +15,8 @@ function App() {
     { name: "Hooks", path: "/hooks-demo" },
     { name: "Users", path: "/list-users" },
     { name: "AxiosHook", path: "/list-users-axios-hooks" },
-    { name: "Countdown", path: "/countdown" }
+    { name: "Countdown", path: "/countdown" },
+    { name: "HigherOrder", path: "/higher-order-component" }
   ];
 
   return (
@@ -30,6 +32,7 @@ function App() {
           <Route path="/list-users" element={<UsersList />} />
           <Route path="/list-users-axios-hooks" element={<UsersListAxiosHooks />} />
           <Route path="/countdown" element={<CountdownClass />} />
+          <Route path="/higher-order-component" element={<HigherOrderComponent />} />
         </Routes>
       </main>
     </Router>
